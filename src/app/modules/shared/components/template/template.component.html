@@ -1,0 +1,32 @@
+<mat-drawer-container autosize [ngClass]="colorBackground ? 'primary-bg' : ''">
+  <mat-drawer #drawer mode="side" class="side-navbar">
+    <div class="container">
+      <div class="logo-bg">
+        <div class="sidenav-logo logo-container"></div>
+      </div>
+      <button
+        mat-menu-item
+        routerLink="/home"
+        (click)="drawer.toggle()"
+        class="sidenav-box-button"
+      >
+        <div class="sidenav-box sidenav-item">
+          <mat-icon class="item-icon">home</mat-icon>
+          <span class="item-txt">Inicio</span>
+        </div>
+      </button>
+      <div class="close-box">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-navbar [drawer]="drawer" *ngIf="isMenuRequired"></app-navbar>
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+    <app-footer *ngIf="isMenuRequired"></app-footer>
+  </mat-drawer-content>
+</mat-drawer-container>
