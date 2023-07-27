@@ -13,6 +13,8 @@
     mat-icon-button
     matTooltip="Basic"
     aria-label="Example icon-button with a heart icon"
+    *ngIf="isAuthenticated()"
+    (click)="logout()"
   >
     <mat-icon>logout</mat-icon>
   </button>

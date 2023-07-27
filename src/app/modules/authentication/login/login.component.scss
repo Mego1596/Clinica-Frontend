@@ -1,0 +1,64 @@
+.card-centered {
+  height: 100%;
+  justify-content: center;
+}
+
+.card {
+  width: 35%;
+  height: auto;
+  box-shadow: 0px 0px 25px 0px #6fd6f6 !important;
+}
+
+.card-header {
+  width: 100%;
+  padding: 0;
+  justify-content: center;
+}
+
+.card-content {
+  height: auto;
+  overflow-y: auto;
+}
+
+.login-title {
+  color: #142028;
+}
+
+.card-actions {
+  width: 100%;
+  justify-content: center;
+}
+
+.form-container {
+  height: auto;
+}
+
+.form-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 95%;
+  }
+  .mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 0rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 400px) {
+  .logo-container {
+    width: 35%;
+  }
+  .card {
+    width: 95%;
+  }
+  .card-content {
+    overflow-y: auto;
+  }
+  .form-container {
+    overflow-y: auto;
+  }
+}
