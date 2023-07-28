@@ -1,0 +1,148 @@
+<div class="title-container">
+  <h2>Editar Usuario</h2>
+</div>
+<form [formGroup]="userEditForm" class="form-container" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Primer Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="firstName"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="userEditForm.controls['firstName'].hasError('required')"
+      >
+        Primer Nombre es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Segundo Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="middleName"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Primer Apellido</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="lastName"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="userEditForm.controls['firstName'].hasError('required')"
+      >
+        Primer Apellido es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Segundo Apellido</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="maternalLastName"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <div class="form-column">
+      <p class="full-width text-centered m-0">
+        <span>Seleccione el género:</span>
+      </p>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="gender"
+        class="text-centered"
+        color="primary"
+      >
+        <mat-radio-button value="M">Masculino</mat-radio-button>
+        <mat-radio-button value="F">Femenino</mat-radio-button>
+        <mat-radio-button value="O">Otros</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>E-Mail</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="email"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="
+          userEditForm.controls['email'].hasError('email') &&
+          !userEditForm.controls['email'].hasError('required')
+        "
+      >
+        Porfavor ingresa un correo válido
+      </mat-error>
+      <mat-error *ngIf="userEditForm.controls['email'].hasError('required')">
+        E-Mail es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Teléfono</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="phoneNumber"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="userEditForm.controls['phoneNumber'].hasError('required')"
+      >
+        Teléfono es <strong>requerido</strong>
+      </mat-error>
+      <mat-error
+        *ngIf="userEditForm.controls['phoneNumber'].hasError('pattern')"
+      >
+        Teléfono no cumple con el patron: <strong>####-####</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Dirección</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="address"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+      <mat-error *ngIf="userEditForm.controls['address'].hasError('required')">
+        Dirección es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <div class="form-column">
+      <mat-form-field>
+        <mat-label>Seleccione un grupo...</mat-label>
+        <mat-select formControlName="groups">
+          <mat-option *ngFor="let group of groups" [value]="group['id']">
+            {{ group["name"] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-actions">
+    <a routerLink="/users" mat-raised-button color="warn" class="mr-1"
+      >Regresar</a
+    >
+    <button mat-raised-button type="submit" class="mr-1 primary">
+      Guardar
+    </button>
+  </div>
+</form>

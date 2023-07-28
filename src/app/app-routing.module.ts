@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { noAuthGuard } from './guards/authentication/noauth/no-auth.guard';
 import { authGuard } from './guards/authentication/auth/auth.guard';
+import { verifyPermissionGuard } from './guards/permission/verify-permission.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
     canActivate: [authGuard],
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./modules/users/users.module').then((m) => m.UsersModule),
+    canActivate: [authGuard, verifyPermissionGuard],
+    data: { permission: '--viewperson' },
   },
 ];
 

@@ -29,4 +29,17 @@ export const ROUTES = {
       return `${BASE}/group/get_groups/`;
     },
   },
+  user: {
+    list: `${BASE}/user/`,
+    create: `${BASE}/user/`,
+    get: (id: number) => {
+      return `${BASE}/user/${id}/`;
+    },
+    update: (id: number) => {
+      return `${BASE}/user/${id}/`;
+    },
+    delete: (id: number) => {
+      return `${BASE}/user/${id}/`;
+    },
+  },
 };
