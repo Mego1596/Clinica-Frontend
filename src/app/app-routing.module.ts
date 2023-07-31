@@ -26,6 +26,13 @@ const routes: Routes = [
     canActivate: [authGuard, verifyPermissionGuard],
     data: { permission: '--viewperson' },
   },
+  {
+    path: 'doctors',
+    loadChildren: () =>
+      import('./modules/doctors/doctors.module').then((m) => m.DoctorsModule),
+    canActivate: [authGuard, verifyPermissionGuard],
+    data: { permission: '--viewdoctor' },
+  },
 ];
 
 @NgModule({
