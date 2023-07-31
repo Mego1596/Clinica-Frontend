@@ -1,0 +1,236 @@
+<div class="title-container">
+  <h2>Agregar Paciente</h2>
+</div>
+<form
+  [formGroup]="patientAddForm"
+  class="form-container"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Primer Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="firstName"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="patientAddForm.controls['firstName'].hasError('required')"
+      >
+        Primer Nombre es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Segundo Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="middleName"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Primer Apellido</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="lastName"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="patientAddForm.controls['firstName'].hasError('required')"
+      >
+        Primer Apellido es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Segundo Apellido</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="maternalLastName"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <div class="form-column">
+      <p class="full-width text-centered m-0">
+        <span>Seleccione el género:</span>
+      </p>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="gender"
+        class="text-centered"
+        color="primary"
+      >
+        <mat-radio-button value="M">Masculino</mat-radio-button>
+        <mat-radio-button value="F">Femenino</mat-radio-button>
+        <mat-radio-button value="O">Otros</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Ocupación</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="occupation"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="patientAddForm.controls['occupation'].hasError('required')"
+      >
+        Ocupación es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="birthDate"
+        [errorStateMatcher]="matcher"
+        max="{{ today | date : 'yyyy-MM-dd' }}"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="patientAddForm.controls['birthDate'].hasError('required')"
+      >
+        Fecha de nacimiento es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Responsable</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="parentName"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Referido por</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="referred"
+        [errorStateMatcher]="matcher"
+      />
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>E-Mail</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="email"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="
+          patientAddForm.controls['email'].hasError('email') &&
+          !patientAddForm.controls['email'].hasError('required')
+        "
+      >
+        Porfavor ingresa un correo válido
+      </mat-error>
+      <mat-error *ngIf="patientAddForm.controls['email'].hasError('required')">
+        E-Mail es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Teléfono</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="phoneNumber"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="patientAddForm.controls['phoneNumber'].hasError('required')"
+      >
+        Teléfono es <strong>requerido</strong>
+      </mat-error>
+      <mat-error
+        *ngIf="patientAddForm.controls['phoneNumber'].hasError('pattern')"
+      >
+        Teléfono no cumple con el patron: <strong>####-####</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Dirección</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="address"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+      <mat-error
+        *ngIf="patientAddForm.controls['address'].hasError('required')"
+      >
+        Dirección es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Dirección de trabajo</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="workAddress"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+      <mat-error
+        *ngIf="patientAddForm.controls['workAddress'].hasError('required')"
+      >
+        Dirección de trabajo es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width mr-1">
+      <mat-label>Historial Odontologico</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="dentalHistory"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Historial Medico</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="medicalHistory"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="form-actions">
+    <a routerLink="/patients" mat-raised-button color="warn" class="mr-1"
+      >Regresar</a
+    >
+    <button mat-raised-button type="submit" class="mr-1 primary">
+      Guardar
+    </button>
+  </div>
+</form>

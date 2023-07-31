@@ -1,0 +1,40 @@
+<div class="popup-container">
+  <h1 mat-dialog-title>Datos del paciente</h1>
+  <mat-dialog-content *ngIf="data">
+    <h1 class="title">
+      Expediente No.: {{ data.medicalRecord.medicalRecordNumber }}
+    </h1>
+    <div>
+      <h2>Datos de la persona</h2>
+      <p>
+        <strong>Nombre:</strong> {{ data.person.firstName }}
+        {{ data.person.middleName }} {{ data.person.lastName }}
+        {{ data.person.maternalLastName }}
+      </p>
+      <p>
+        <strong>Genero:</strong>
+        {{
+          data.person.gender === "M"
+            ? "Masculino"
+            : data.person.gender === "F"
+            ? "Femenino"
+            : "Otro"
+        }}
+      </p>
+      <p><strong>Ocupación:</strong> {{ data.occupation }}</p>
+      <p><strong>Fecha de nacimiento:</strong> {{ data.birthDate }}</p>
+      <p><strong>Edad:</strong> {{ this.age }}</p>
+      <p><strong>Responsable:</strong> {{ data.parentName }}</p>
+      <p><strong>Referido:</strong> {{ data.referred }}</p>
+      <p><strong>Teléfono:</strong> {{ data.person.phoneNumber }}</p>
+      <p><strong>Dirección:</strong> {{ data.person.address }}</p>
+      <p><strong>Dirección de Trabajo:</strong> {{ data.workAddress }}</p>
+      <p><strong>Correo Electrónico:</strong> {{ data.person.user.email }}</p>
+      <p><strong>Historial Odontológico:</strong> {{ data.dentalHistory }}</p>
+      <p><strong>Historial Medico:</strong> {{ data.medicalHistory }}</p>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+  </div>
+</div>

@@ -39,6 +39,18 @@
           <span class="item-txt">Doctores</span>
         </div>
       </button>
+      <button
+        *ngIf="checkPermission('--viewpatient')"
+        mat-menu-item
+        routerLink="/patients"
+        (click)="drawer.toggle()"
+        class="sidenav-box-button"
+      >
+        <div class="sidenav-box sidenav-item">
+          <mat-icon class="item-icon">badge</mat-icon>
+          <span class="item-txt">Expedientes</span>
+        </div>
+      </button>
       <div class="close-box">
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>chevron_left</mat-icon>

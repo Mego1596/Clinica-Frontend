@@ -56,4 +56,14 @@ export const ROUTES = {
       return `${BASE}/doctor/${id}/`;
     },
   },
+  patient: {
+    list: `${BASE}/patient/`,
+    create: `${BASE}/patient/`,
+    get: (id: number) => {
+      return `${BASE}/patient/${id}/`;
+    },
+    update: (id: number) => {
+      return `${BASE}/patient/${id}/`;
+    },
+  },
 };
