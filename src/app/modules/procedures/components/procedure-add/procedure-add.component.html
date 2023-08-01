@@ -1,0 +1,43 @@
+<div class="popup-container">
+  <h1 mat-dialog-title>Agregar procedimiento</h1>
+  <form class="form-container" (submit)="onSubmit()">
+    <mat-card-content class="card-content">
+      <div class="form-row">
+        <mat-form-field class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input
+            type="text"
+            matInput
+            [(ngModel)]="name"
+            name="name"
+            required
+            autocomplete="off"
+            #nameInput="ngModel"
+          />
+        </mat-form-field>
+        <mat-error
+          *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)"
+        >
+          Nombre es <strong>requerido</strong>
+        </mat-error>
+      </div>
+      <div class="form-row">
+        <mat-form-field class="full-width">
+          <mat-label>Descripción</mat-label>
+          <input
+            type="text"
+            matInput
+            [(ngModel)]="description"
+            name="description"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <div mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+      <button type="submit" mat-raised-button class="primary">Guardar</button>
+    </div>
+  </form>
+  <mat-dialog-content> </mat-dialog-content>
+</div>

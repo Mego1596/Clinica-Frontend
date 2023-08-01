@@ -51,6 +51,18 @@
           <span class="item-txt">Expedientes</span>
         </div>
       </button>
+      <button
+        *ngIf="checkPermission('--viewprocedure')"
+        mat-menu-item
+        routerLink="/procedures"
+        (click)="drawer.toggle()"
+        class="sidenav-box-button"
+      >
+        <div class="sidenav-box sidenav-item">
+          <mat-icon class="item-icon">list_alt</mat-icon>
+          <span class="item-txt">Procedimientos</span>
+        </div>
+      </button>
       <div class="close-box">
         <button mat-icon-button (click)="drawer.toggle()">
           <mat-icon>chevron_left</mat-icon>
