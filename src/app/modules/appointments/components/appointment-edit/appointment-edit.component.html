@@ -1,0 +1,106 @@
+<div class="title-container">
+  <h2>Agendar Cita</h2>
+</div>
+<form
+  [formGroup]="appointmentEditForm"
+  class="form-container"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Fecha de inicio</mat-label>
+      <input
+        matInput
+        type="datetime-local"
+        formControlName="startDate"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="appointmentEditForm.controls['startDate'].hasError('required')"
+      >
+        Fecha de inicio es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Fecha de finalización</mat-label>
+      <input
+        matInput
+        type="datetime-local"
+        formControlName="endDate"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="appointmentEditForm.controls['endDate'].hasError('required')"
+      >
+        Fecha de finalización es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="description"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+      <mat-error
+        *ngIf="appointmentEditForm.controls['description'].hasError('required')"
+      >
+        Descripción es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Seleccione un doctor...</mat-label>
+      <mat-select formControlName="doctor">
+        <mat-option *ngFor="let doctor of doctors" [value]="doctor['id']">
+          Dr. {{ doctor["person"]["firstName"] }}
+          {{ doctor["person"]["lastName"] }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="appointmentEditForm.controls['doctor'].hasError('required')"
+      >
+        Doctor es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row" *ngIf="activeTreatmentPlan">
+    <mat-form-field class="full-width">
+      <mat-label>Asociar el plan de tratamiento...</mat-label>
+      <mat-select formControlName="treatmentPlan">
+        <mat-option [value]="activeTreatmentPlan['id']">Si</mat-option>
+        <mat-option value="">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-actions">
+    <button
+      mat-raised-button
+      type="submit"
+      class="full-width primary"
+      *ngIf="checkPermission('--changeappointment')"
+    >
+      Actualizar
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      class="full-width"
+      color="warn"
+      (click)="onDelete()"
+      *ngIf="checkPermission('--deleteppointment')"
+    >
+      Eliminar
+    </button>
+
+    <button mat-raised-button mat-dialog-close class="full-width">
+      Cerrar
+    </button>
+  </div>
+</form>

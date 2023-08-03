@@ -99,4 +99,23 @@ export const ROUTES = {
       return `${BASE}/treatment_plan/${id}/`;
     },
   },
+  appointment: {
+    list: `${BASE}/appointment/`,
+    create: `${BASE}/appointment/`,
+    get: (id: number) => {
+      return `${BASE}/appointment/${id}/`;
+    },
+    getAppointments: (viewStartDate: string, viewEndDate: string) => {
+      return `${BASE}/appointment/get_appointments/?start_date=${viewStartDate}&end_date=${viewEndDate}`;
+    },
+    update: (id: number) => {
+      return `${BASE}/appointment/${id}/`;
+    },
+    patch: (id: number) => {
+      return `${BASE}/appointment/${id}/`;
+    },
+    delete: (id: number) => {
+      return `${BASE}/appointment/${id}/`;
+    },
+  },
 };

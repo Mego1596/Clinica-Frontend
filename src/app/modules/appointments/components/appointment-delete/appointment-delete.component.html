@@ -1,0 +1,17 @@
+<div class="popup-container">
+  <h1 mat-dialog-title>Eliminar Cita</h1>
+  <mat-dialog-content *ngIf="data">
+    <p>Realmente deseas eliminar esta cita?</p>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close class="mr-1">Cerrar</button>
+    <button
+      mat-raised-button
+      mat-dialog-close
+      class="primary"
+      (click)="onDelete()"
+    >
+      Eliminar
+    </button>
+  </div>
+</div>

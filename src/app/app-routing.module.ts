@@ -51,6 +51,15 @@ const routes: Routes = [
     canActivate: [authGuard, verifyPermissionGuard],
     data: { permission: '--viewprocedure' },
   },
+  {
+    path: 'appointments',
+    loadChildren: () =>
+      import('./modules/appointments/appointments.module').then(
+        (m) => m.AppointmentsModule
+      ),
+    canActivate: [authGuard, verifyPermissionGuard],
+    data: { permission: '--viewappointment' },
+  },
 ];
 
 @NgModule({

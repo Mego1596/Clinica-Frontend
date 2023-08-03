@@ -16,6 +16,18 @@
         </div>
       </button>
       <button
+        *ngIf="checkPermission('--viewappointment')"
+        mat-menu-item
+        routerLink="/appointments"
+        (click)="drawer.toggle()"
+        class="sidenav-box-button"
+      >
+        <div class="sidenav-box sidenav-item">
+          <mat-icon class="item-icon">calendar_month</mat-icon>
+          <span class="item-txt">Citas</span>
+        </div>
+      </button>
+      <button
         *ngIf="checkPermission('--viewperson')"
         mat-menu-item
         routerLink="/users"

@@ -126,3 +126,24 @@ body {
 .green {
   color: #54a574 !important;
 }
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #cde4ec;
+}
+
+.fc .fc-timegrid-col.fc-day-today {
+  background-color: #cde4ec;
+}
+
+.event-text:hover {
+  animation: scrollText 10s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
