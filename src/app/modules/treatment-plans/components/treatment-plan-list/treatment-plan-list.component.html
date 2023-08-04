@@ -1,0 +1,89 @@
+<div class="title-container">
+  <h2>Listado de Planes de Tratamiento</h2>
+</div>
+<div class="list-btn-section">
+  <div class="section-container">
+    <div>
+      <button mat-raised-button color="warn" routerLink="/patients">
+        Regresar
+      </button>
+    </div>
+    <div
+      *ngIf="checkPermission('--addtreatmentplan') && showTreatmentPlanAddBtn"
+    >
+      <button
+        mat-raised-button
+        class="primary"
+        [routerLink]="['/patients/treatment-plans', patientId, 'add']"
+      >
+        Agregar Plan de Tratamiento
+      </button>
+    </div>
+  </div>
+</div>
+<section class="mat-table-container" tabindex="0">
+  <table mat-table [dataSource]="dataList" matSort>
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.isActive ? "Activo" : "Inactivo" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr)">
+          <div *ngIf="checkPermission('--viewtreatmentplan')">
+            <button mat-icon-button (click)="onView(element.row.procedures)">
+              <mat-icon fontIcon="preview" />
+            </button>
+          </div>
+          <div *ngIf="checkPermission('--changetreatmentplan')">
+            <a
+              mat-icon-button
+              [routerLink]="[
+                '/patients/treatment-plans',
+                patientId,
+                'edit',
+                element.id
+              ]"
+              class="green"
+            >
+              <mat-icon fontIcon="edit" />
+            </a>
+          </div>
+          <div
+            *ngIf="checkPermission('--deletetreatmentplan') && element.isActive"
+          >
+            <a mat-icon-button color="warn" (click)="onDelete(element.row)">
+              <mat-icon fontIcon="delete" />
+            </a>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</section>
+<div class="pagination">
+  <button
+    class="pagination-btn prev"
+    (click)="loadPage(currentPage - 1)"
+    [disabled]="currentPage === 1 || currentPage === 0"
+  >
+    <mat-icon class="pagination-left-icon-centered">chevron_left</mat-icon>
+  </button>
+  <span class="pagination-info"
+    >Página {{ currentPage }} de {{ totalPages }}</span
+  >
+  <button
+    class="pagination-btn next"
+    (click)="loadPage(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    <mat-icon class="pagination-right-icon-centered">chevron_right</mat-icon>
+  </button>
+</div>

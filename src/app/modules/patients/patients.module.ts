@@ -9,6 +9,7 @@ import { PatientListComponent } from './components/patient-list/patient-list.com
 import { PatientAddComponent } from './components/patient-add/patient-add.component';
 import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
 import { PatientViewComponent } from './components/patient-view/patient-view.component';
+import { TreatmentPlansModule } from '../treatment-plans/treatment-plans.module';
 
 const components = [
   PatientsComponent,
@@ -22,6 +23,7 @@ const modules = [
   PatientsRoutingModule,
   SharedModule,
   ReactiveFormsModule,
+  TreatmentPlansModule,
 ];
 @NgModule({
   declarations: [...components],

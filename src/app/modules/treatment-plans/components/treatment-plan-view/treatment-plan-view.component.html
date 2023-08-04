@@ -1,0 +1,29 @@
+<div class="popup-container">
+  <h1 mat-dialog-title>Datos del plan de tratamiento</h1>
+  <mat-dialog-content *ngIf="data">
+    <div *ngFor="let item of data" class="grid-container">
+      <div class="column">
+        <span><strong>Procedimiento: </strong></span>
+        <span>{{ item.procedure.name }}</span>
+      </div>
+      <div class="column">
+        <span
+          ><strong>Numero de piezas: </strong>{{ item.numberOfPieces }}</span
+        >
+        <span></span>
+      </div>
+      <div class="column">
+        <span><strong>Honorarios: </strong>{{ item.fees }}</span>
+        <span></span>
+      </div>
+    </div>
+    <div class="column">
+      <span
+        ><strong>TOTAL: ${{ totalFees }} </strong></span
+      >
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+  </div>
+</div>

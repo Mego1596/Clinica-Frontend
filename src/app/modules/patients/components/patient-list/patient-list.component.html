@@ -67,6 +67,14 @@
               <mat-icon fontIcon="preview" />
             </button>
           </div>
+          <div *ngIf="checkPermission('--viewtreatmentplan')">
+            <button
+              mat-icon-button
+              [routerLink]="'/patients/treatment-plans/' + element.id"
+            >
+              <mat-icon fontIcon="list" />
+            </button>
+          </div>
           <div *ngIf="checkPermission('--changepatient')">
             <a
               mat-icon-button

@@ -80,4 +80,23 @@ export const ROUTES = {
       return `${BASE}/procedure/${id}/`;
     },
   },
+  treatmentPlan: {
+    list: `${BASE}/treatment_plan/`,
+    create: `${BASE}/treatment_plan/`,
+    get: (id: number) => {
+      return `${BASE}/treatment_plan/${id}/`;
+    },
+    getTreatmentPlans: (patientId: string) => {
+      return `${BASE}/treatment_plan/get_treatment_plans/${patientId}`;
+    },
+    getTreatmentPlan: (patientId: string) => {
+      return `${BASE}/treatment_plan/get_active_treatment_plan/${patientId}`;
+    },
+    update: (id: number) => {
+      return `${BASE}/treatment_plan/${id}/`;
+    },
+    delete: (id: number) => {
+      return `${BASE}/treatment_plan/${id}/`;
+    },
+  },
 };

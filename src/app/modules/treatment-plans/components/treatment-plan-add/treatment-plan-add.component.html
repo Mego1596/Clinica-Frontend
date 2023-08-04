@@ -1,0 +1,73 @@
+<div class="title-container">
+  <h2>Agregar Plan de Tratamiento</h2>
+</div>
+<form class="form-container" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-column">
+      <mat-form-field>
+        <mat-label>Seleccione procedimientos...</mat-label>
+        <mat-select
+          [(ngModel)]="selectedProcedures"
+          (ngModelChange)="onProcedureSelectionChange()"
+          multiple
+          name="selectedProcedures"
+          required
+        >
+          <mat-option *ngFor="let procedure of procedures" [value]="procedure">
+            {{ procedure.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div *ngFor="let procedure of selectedProcedures" class="form-column">
+    <div>
+      <h2 class="text-centered">
+        {{ procedure.name }}:
+        <span>
+          <button
+            mat-raised-button
+            (click)="removeProcedure(procedure)"
+            color="warn"
+          >
+            Eliminar
+          </button>
+        </span>
+      </h2>
+      <label for="procedureFee{{ procedure.id }}">Honorarios:</label>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="procedure.fees"
+          name="procedureFee{{ procedure.id }}"
+          min="0"
+          [step]="0.01"
+        />
+      </mat-form-field>
+      <label for="procedureQuantity{{ procedure.id }}"
+        >Cantidad de piezas:</label
+      >
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="procedure.numberOfPieces"
+          name="procedureQuantity{{ procedure.id }}"
+          min="0"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-actions">
+    <a
+      [routerLink]="['/patients/treatment-plans', patientId]"
+      mat-raised-button
+      class="mr-1"
+      >Regresar</a
+    >
+    <button mat-raised-button type="submit" class="mr-1 primary">
+      Guardar
+    </button>
+  </div>
+</form>

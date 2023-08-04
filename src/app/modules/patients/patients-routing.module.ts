@@ -5,6 +5,9 @@ import { PatientsComponent } from './patients.component';
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { PatientAddComponent } from './components/patient-add/patient-add.component';
 import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
+import { TreatmentPlanListComponent } from '../treatment-plans/components/treatment-plan-list/treatment-plan-list.component';
+import { TreatmentPlanAddComponent } from '../treatment-plans/components/treatment-plan-add/treatment-plan-add.component';
+import { TreatmentPlanEditComponent } from '../treatment-plans/components/treatment-plan-edit/treatment-plan-edit.component';
 
 const routes: Routes = [
   {
@@ -28,6 +31,24 @@ const routes: Routes = [
         component: PatientEditComponent,
         canActivate: [verifyPermissionGuard],
         data: { permission: '--changepatient' },
+      },
+      {
+        path: 'treatment-plans/:id',
+        component: TreatmentPlanListComponent,
+        canActivate: [verifyPermissionGuard],
+        data: { permission: '--viewtreatmentplan' },
+      },
+      {
+        path: 'treatment-plans/:id/add',
+        component: TreatmentPlanAddComponent,
+        canActivate: [verifyPermissionGuard],
+        data: { permission: '--addtreatmentplan' },
+      },
+      {
+        path: 'treatment-plans/:id/edit/:treatmentPlanId',
+        component: TreatmentPlanEditComponent,
+        canActivate: [verifyPermissionGuard],
+        data: { permission: '--changetreatmentplan' },
       },
     ],
   },

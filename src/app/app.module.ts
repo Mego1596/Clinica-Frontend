@@ -9,6 +9,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { SnakeToCamelCaseInterceptor } from './interceptors/snake-to-camel-case/snake-to-camel-case.interceptor';
+import { TreatmentPlansModule } from './modules/treatment-plans/treatment-plans.module';
 
 const modules = [
   BrowserModule,
@@ -16,6 +17,7 @@ const modules = [
   BrowserAnimationsModule,
   SharedModule,
   HttpClientModule,
+  TreatmentPlansModule,
   ToastrModule.forRoot(),
 ];
 
