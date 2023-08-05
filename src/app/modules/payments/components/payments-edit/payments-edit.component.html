@@ -1,0 +1,53 @@
+<div class="title-container">
+  <h2>Agregar Pago</h2>
+</div>
+<form
+  [formGroup]="paymentsEditForm"
+  class="form-container"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Abono</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="income"
+        [errorStateMatcher]="matcher"
+        [step]="0.01"
+        min="0"
+      />
+      <mat-error
+        *ngIf="paymentsEditForm.controls['income'].hasError('required')"
+      >
+        Abono es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        type="text"
+        matInput
+        formControlName="description"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+      <mat-error
+        *ngIf="paymentsEditForm.controls['description'].hasError('required')"
+      >
+        Descripción es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-actions">
+    <button mat-raised-button mat-dialog-close class="mr-1" color="warn">
+      Cerrar
+    </button>
+    <button mat-raised-button type="submit" class="mr-1 primary">
+      Guardar
+    </button>
+  </div>
+</form>

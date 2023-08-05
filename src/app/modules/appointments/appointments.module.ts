@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppointmentAddComponent } from './components/appointment-add/appointment-add.component';
 import { AppointmentEditComponent } from './components/appointment-edit/appointment-edit.component';
 import { AppointmentDeleteComponent } from './components/appointment-delete/appointment-delete.component';
+import { PaymentsModule } from '../payments/payments.module';
 
 const components = [
   AppointmentsComponent,
@@ -22,6 +23,7 @@ const modules = [
   SharedModule,
   ReactiveFormsModule,
   FullCalendarModule,
+  PaymentsModule,
 ];
 @NgModule({
   declarations: [...components],

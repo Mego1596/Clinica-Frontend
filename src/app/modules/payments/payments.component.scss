@@ -1,0 +1,23 @@
+.mat-table-container {
+  overflow-x: auto;
+  height: 325px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.list-btn-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.section-container {
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+}

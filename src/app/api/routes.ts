@@ -118,4 +118,20 @@ export const ROUTES = {
       return `${BASE}/appointment/${id}/`;
     },
   },
+  payment: {
+    list: `${BASE}/payment/`,
+    create: `${BASE}/payment/`,
+    get: (id: number) => {
+      return `${BASE}/payment/${id}/`;
+    },
+    getPayments: (appointmentId: number) => {
+      return `${BASE}/payment/get_payments/${appointmentId}`;
+    },
+    update: (id: number) => {
+      return `${BASE}/payment/${id}/`;
+    },
+    delete: (id: number) => {
+      return `${BASE}/payment/${id}/`;
+    },
+  },
 };

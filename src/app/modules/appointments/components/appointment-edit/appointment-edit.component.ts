@@ -22,6 +22,7 @@ import { AppointmentDeleteComponent } from '../appointment-delete/appointment-de
 import { PermissionCheckService } from 'src/app/services/permission-check/permission-check.service';
 import { ITreatmentPlan } from 'src/app/modules/treatment-plans/interfaces/treatment-plan.interface';
 import { TreatmentPlanService } from 'src/app/modules/treatment-plans/services/treatment-plan.service';
+import { PaymentsComponent } from 'src/app/modules/payments/payments.component';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -138,6 +139,15 @@ export class AppointmentEditComponent {
       next: (response) => {
         this._dialogReference.close(response);
       },
+    });
+  }
+
+  onViewPayment() {
+    const viewPaymentDialogReference = this._dialog.open(PaymentsComponent, {
+      enterAnimationDuration: '1000ms',
+      exitAnimationDuration: '500ms',
+      width: '100%',
+      data: { appointmentId: this.data.appointmentId },
     });
   }
 
