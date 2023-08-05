@@ -1,0 +1,20 @@
+<div class="popup-container">
+  <h1 mat-dialog-title>Eliminar Procedimiento</h1>
+  <mat-dialog-content *ngIf="data">
+    <h1 class="title">Nombre: {{ data.medication }}</h1>
+    <p>Realmente deseas eliminar este detalle?</p>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="warn" class="mr-1">
+      Cerrar
+    </button>
+    <button
+      mat-raised-button
+      mat-dialog-close
+      class="primary"
+      (click)="onDelete()"
+    >
+      Eliminar
+    </button>
+  </div>
+</div>

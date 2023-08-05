@@ -107,6 +107,16 @@
     >
       Pago
     </button>
+    <button
+      mat-raised-button
+      type="button"
+      class="full-width"
+      color="accent"
+      (click)="onViewMedicalPrescription()"
+      *ngIf="checkPermission('--viewmedicalprescription')"
+    >
+      Receta Médica
+    </button>
     <button mat-raised-button mat-dialog-close class="full-width">
       Cerrar
     </button>

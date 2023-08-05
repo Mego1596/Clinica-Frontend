@@ -1,0 +1,106 @@
+<div class="title-container">
+  <h2>Receta Médica</h2>
+</div>
+<div class="list-btn-section">
+  <div class="section-container">
+    <div>
+      <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+    </div>
+    <div
+      *ngIf="checkPermission('--addmedicalprescription') && !showAddDetailsBtn"
+    >
+      <button mat-raised-button class="primary" (click)="onCreate()">
+        Agregar Receta
+      </button>
+    </div>
+    <div
+      *ngIf="checkPermission('--addprescriptiondetail') && showAddDetailsBtn"
+    >
+      <button
+        mat-raised-button
+        class="primary"
+        (click)="onCreatePrescriptionDetail()"
+      >
+        Agregar Detalles
+      </button>
+    </div>
+  </div>
+</div>
+<div class="popup-content">
+  <div class="medical-prescription-section" *ngIf="medicalPrescription">
+    <div class="row">
+      <h1 class="title-centered">
+        <strong>Peso: </strong>{{ medicalPrescription.weight }} lbs.
+      </h1>
+      <button
+        mat-icon-button
+        class="green"
+        (click)="onUpdate()"
+        *ngIf="checkPermission('--changemedicalprescription')"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="onDelete()"
+        *ngIf="checkPermission('--deletemedicalprescription')"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div
+      class="full-width column"
+      *ngIf="checkPermission('--viewprescriptiondetail')"
+    >
+      <section class="mat-table-container" tabindex="0">
+        <table mat-table [dataSource]="dataList" matSort>
+          <ng-container matColumnDef="medication">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Medicina</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.medication }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="dose">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Dosis</th>
+            <td mat-cell *matCellDef="let element">{{ element.dose }}</td>
+          </ng-container>
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad</th>
+            <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr)">
+                <div *ngIf="checkPermission('--changeprescriptiondetail')">
+                  <button
+                    mat-icon-button
+                    class="green"
+                    type="button"
+                    (click)="onUpdatePrescriptionDetail(element.row)"
+                  >
+                    <mat-icon fontIcon="edit" />
+                  </button>
+                </div>
+                <div *ngIf="checkPermission('--deleteprescriptiondetail')">
+                  <a
+                    mat-icon-button
+                    color="warn"
+                    (click)="onDeletePrescriptionDetail(element.row)"
+                  >
+                    <mat-icon fontIcon="delete" />
+                  </a>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>

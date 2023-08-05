@@ -1,0 +1,73 @@
+<div class="title-container">
+  <h2>Agregar Detalle</h2>
+</div>
+<form
+  [formGroup]="prescriptionDetailsEditForm"
+  class="form-container"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Medicamento</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="medication"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="
+          prescriptionDetailsEditForm.controls['medication'].hasError(
+            'required'
+          )
+        "
+      >
+        Medicamento es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Dosis</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="dose"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="
+          prescriptionDetailsEditForm.controls['dose'].hasError('required')
+        "
+      >
+        Dósis es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Cantidad</mat-label>
+      <input
+        matInput
+        formControlName="quantity"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="
+          prescriptionDetailsEditForm.controls['quantity'].hasError('required')
+        "
+      >
+        Cantidad es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-actions">
+    <button mat-raised-button mat-dialog-close class="mr-1" color="warn">
+      Cerrar
+    </button>
+    <button mat-raised-button type="submit" class="mr-1 primary">
+      Guardar
+    </button>
+  </div>
+</form>

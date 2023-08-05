@@ -23,6 +23,7 @@ import { PermissionCheckService } from 'src/app/services/permission-check/permis
 import { ITreatmentPlan } from 'src/app/modules/treatment-plans/interfaces/treatment-plan.interface';
 import { TreatmentPlanService } from 'src/app/modules/treatment-plans/services/treatment-plan.service';
 import { PaymentsComponent } from 'src/app/modules/payments/payments.component';
+import { MedicalPrescriptionsComponent } from 'src/app/modules/medical-prescriptions/medical-prescriptions.component';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -149,6 +150,18 @@ export class AppointmentEditComponent {
       width: '100%',
       data: { appointmentId: this.data.appointmentId },
     });
+  }
+
+  onViewMedicalPrescription() {
+    const viewMedicalPrescriptionDialogReference = this._dialog.open(
+      MedicalPrescriptionsComponent,
+      {
+        enterAnimationDuration: '1000ms',
+        exitAnimationDuration: '500ms',
+        width: '100%',
+        data: { appointmentId: this.data.appointmentId },
+      }
+    );
   }
 
   checkPermission(permission: string) {

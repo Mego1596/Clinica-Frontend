@@ -10,6 +10,7 @@ import { AppointmentAddComponent } from './components/appointment-add/appointmen
 import { AppointmentEditComponent } from './components/appointment-edit/appointment-edit.component';
 import { AppointmentDeleteComponent } from './components/appointment-delete/appointment-delete.component';
 import { PaymentsModule } from '../payments/payments.module';
+import { MedicalPrescriptionsModule } from '../medical-prescriptions/medical-prescriptions.module';
 
 const components = [
   AppointmentsComponent,
@@ -24,6 +25,7 @@ const modules = [
   ReactiveFormsModule,
   FullCalendarModule,
   PaymentsModule,
+  MedicalPrescriptionsModule,
 ];
 @NgModule({
   declarations: [...components],

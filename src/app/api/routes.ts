@@ -134,4 +134,36 @@ export const ROUTES = {
       return `${BASE}/payment/${id}/`;
     },
   },
+  medicalPrescription: {
+    list: `${BASE}/medical_prescription/`,
+    create: `${BASE}/medical_prescription/`,
+    get: (id: number) => {
+      return `${BASE}/medical_prescription/${id}/`;
+    },
+    getMedicalPrescriptions: (appointmentId: number) => {
+      return `${BASE}/medical_prescription/get_medical_prescriptions/${appointmentId}`;
+    },
+    update: (id: number) => {
+      return `${BASE}/medical_prescription/${id}/`;
+    },
+    delete: (id: number) => {
+      return `${BASE}/medical_prescription/${id}/`;
+    },
+  },
+  prescriptionDetail: {
+    list: `${BASE}/prescription_detail/`,
+    create: `${BASE}/prescription_detail/`,
+    get: (id: number) => {
+      return `${BASE}/prescription_detail/${id}/`;
+    },
+    getPrescriptionDetails: (medicalPrescriptionId: number) => {
+      return `${BASE}/prescription_detail/get_prescription_details/${medicalPrescriptionId}`;
+    },
+    update: (id: number) => {
+      return `${BASE}/prescription_detail/${id}/`;
+    },
+    delete: (id: number) => {
+      return `${BASE}/prescription_detail/${id}/`;
+    },
+  },
 };

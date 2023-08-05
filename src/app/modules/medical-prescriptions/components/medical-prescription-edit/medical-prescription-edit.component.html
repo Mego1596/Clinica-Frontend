@@ -1,0 +1,38 @@
+<div class="title-container">
+  <h2>Agregar Receta Médica</h2>
+</div>
+<form
+  [formGroup]="medicalPrescriptionEditForm"
+  class="form-container"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-row">
+    <mat-form-field class="full-width">
+      <mat-label>Peso</mat-label>
+      <input
+        matInput
+        type="number"
+        [step]="0.01"
+        min="0"
+        formControlName="weight"
+        [errorStateMatcher]="matcher"
+      />
+      <mat-error
+        *ngIf="
+          medicalPrescriptionEditForm.controls['weight'].hasError('required')
+        "
+      >
+        Peso es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-actions">
+    <button mat-raised-button mat-dialog-close class="mr-1" color="warn">
+      Cerrar
+    </button>
+    <button mat-raised-button type="submit" class="mr-1 primary">
+      Guardar
+    </button>
+  </div>
+</form>
